@@ -1,0 +1,25 @@
+﻿@model UmeaBTKRanking.Models.ModelViews.LoginVM
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Login</h1>
+	<form asp-controller="Admin" asp-action="Login" method="post">
+
+		<label asp-for="UserName"></label>
+		<input asp-for="UserName" />
+
+		<label asp-for="Password"></label>
+		<input asp-for="Password" type="password" />
+
+		<input type="submit" value="submit" />
+
+
+	</form>
+
+</body>
+</html>

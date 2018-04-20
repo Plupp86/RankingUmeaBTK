@@ -1,0 +1,184 @@
+﻿body {
+  background-color: #292929;
+  color: black; }
+
+/*#7E827A 
+#2F343B
+#C77966*/
+.left {
+  display: block;
+  float: left;
+  margin-left: 15px; }
+
+.right {
+  display: block;
+  float: right;
+  margin-right: 15px; }
+
+.clearfix {
+  float: none;
+  clear: both; }
+
+a, a:hover {
+  color: black; }
+
+.navbar-default {
+  background-color: white;
+  /*border:2px solid $btkgreen;*/
+  padding-left: 0;
+  padding-right: 0;
+  border: none; }
+
+.navbar-default .navbar-nav > li > a {
+  color: #292929; }
+
+/*.menu {
+	background-color: darkred;
+	padding: 20px;
+	width: 95%;
+	margin: 0 auto;
+	color: white;
+}*/
+.cont {
+  background-color: white;
+  padding: 20px;
+  padding-bottom: 50px;
+  width: 98%;
+  margin: 0 auto; }
+
+text {
+  color: black; }
+
+@media screen and (max-width: 510px) {
+  td.extra {
+    display: none; }
+  th.extra {
+    display: none; }
+  img.extra {
+    display: none; }
+  td.mobOnly {
+    display: initial !important;
+    text-align: right; } }
+
+.win {
+  color: #2F343B; }
+
+.lose {
+  color: #703030; }
+
+th {
+  background-color: darkgray; }
+
+table.stats {
+  padding-bottom: 0;
+  margin-bottom: 0; }
+  table.stats tr {
+    font-size: 12px;
+    background-color: #C7C7C7; }
+    table.stats tr td {
+      text-align: left;
+      padding: 2px; }
+    table.stats tr :hover {
+      background-color: #C7C7C7; }
+
+.valWarning {
+  color: red;
+  text-align: left; }
+
+td.playerName {
+  text-align: left; }
+
+table.leaguetable {
+  border: none;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #2F343B; }
+  table.leaguetable tr:hover {
+    background-color: #7E827A; }
+  table.leaguetable th {
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center; }
+  table.leaguetable th.playerName {
+    text-align: left; }
+  table.leaguetable tr.stats {
+    font-size: 11px;
+    background-color: #C7C7C7; }
+    table.leaguetable tr.stats :hover {
+      background-color: #C7C7C7; }
+
+table.repMatch {
+  border: none;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: #2F343B; }
+  table.repMatch th {
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: center; }
+
+table.Matches {
+  border: none;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  font-size: 14px;
+  text-align: left;
+  color: #2F343B; }
+  table.Matches td {
+    padding-left: 4px;
+    padding-right: 4px; }
+  table.Matches th {
+    padding-left: 4px;
+    padding-right: 4px;
+    text-align: left; }
+
+.mainPage {
+  width: 80%;
+  height: 100%;
+  margin: 5px auto;
+  padding-top: 20px;
+  background-color: white;
+  box-shadow: 0px 0px 10px white; }
+
+/*tr:nth-child(even) {
+	background-color: #7cb6b8;
+}
+
+tr:nth-child(odd) {
+	background-color: #5986ab;
+}
+
+.nameL {
+	text-align: left;
+}
+
+.nameR {
+	text-align: right;
+}
+
+.middle {
+	border-left: none;
+	border-right: none;
+}
+
+.score {
+	border-left: none;
+	border-right: none;
+}
+
+a {
+	color: black;
+}*/

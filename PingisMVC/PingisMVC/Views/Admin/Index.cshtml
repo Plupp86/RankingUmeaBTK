@@ -1,0 +1,62 @@
+﻿@model AdminVM
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Admin Control Panel</h1>
+	Logged in as: @Model.UserName, <a asp-controller="Admin" asp-action="Logout">Logout</a>
+	<div class="form-group">
+		<form asp-controller="Admin" asp-action="RemovePlayer" method="post">
+			<table class="repMatch">
+				<tr>
+					<td>
+						<h3>Remove Player</h3>
+						<label asp-for="PlayerDropList"></label>
+						<select asp-for="PlayerToRemove"
+								asp-items="Model.PlayerDropList" class="form-control"></select>
+						<span asp-validation-for="PlayerDropList"></span>
+						<input type="submit" value="Remove Player" class="form-control"/>
+					</td>
+				</tr>
+				<tr><td><hr /></td></tr>
+			</table>
+		</form>
+	</div>
+	<div class="form-group">
+		<form asp-controller="Admin" asp-action="RemoveTeam" method="post">
+			<table class="repMatch">
+				<tr>
+					<td>
+						<h3>Remove Team</h3>
+						<label asp-for="TeamDropList"></label>
+						<select asp-for="TeamToRemove"
+								asp-items="Model.TeamDropList" class="form-control"></select>
+						<span asp-validation-for="TeamDropList"></span>
+						<input type="submit" value="Remove Team" class="form-control" />
+					</td>
+				</tr>
+				<tr><td><hr /></td></tr>
+			</table>
+			</form>
+		</div>
+	<div class="form-group">
+			<form asp-controller="Admin" asp-action="AddTeam" method="post">
+				<table class="repMatch">
+					<tr>
+						<td>
+							<h3>Add new Team</h3>
+							<label asp-for="NewTeam"></label><br />
+							<input asp-for="NewTeam"  class="form-control" />
+							<span asp-validation-for="NewTeam"></span>
+							<input type="submit" value="Add New Team" class="form-control" />
+						</td>
+					</tr>
+				</table>
+			</form>
+	</div>
+
+</body>
+</html>

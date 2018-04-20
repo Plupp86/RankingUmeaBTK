@@ -1,0 +1,46 @@
+﻿@model AddMatchVM
+
+<h3 class="pageHeader">Lägg till Match</h3><br />
+<div class="form-group">
+	<form asp-controller="Home" asp-action="AddMatch" method="post">
+		<table class="repMatch">
+			<tr>
+				<td>
+					<label asp-for="SelectedPlayer1Id"></label>
+					<select asp-for="SelectedPlayer1Id"
+							asp-items="Model.ListOfPlayers" class="form-control"></select>
+					<span asp-validation-for="SelectedPlayer1Id"></span>
+				</td>
+				<td>
+					<label asp-for="SelectedPlayer1Sets"></label>
+					<select asp-for="SelectedPlayer1Sets"
+							asp-items="Model.Sets" class="form-control"></select>
+					<span asp-validation-for="SelectedPlayer1Sets"></span>
+				</td>
+			</tr>
+			<tr><td colspan="2"><hr /></td></tr>
+			<tr>
+				<td>
+					<label asp-for="SelectedPlayer2Id"></label>
+					<select asp-for="SelectedPlayer2Id"
+							asp-items="Model.ListOfPlayers" class="form-control"></select>
+					
+				</td>
+				<td>
+					<label asp-for="SelectedPlayer2Sets"></label>
+					<select asp-for="SelectedPlayer2Sets"
+							asp-items="Model.Sets" class="form-control"></select>
+					
+				</td>
+			</tr>
+			<tr><td colspan="2"><hr /></td></tr>
+			<tr><td colspan="2"><span asp-validation-for="SelectedPlayer2Id" class="valWarning"></span></td></tr>
+			<tr><td colspan="2"><span asp-validation-for="SelectedPlayer2Sets" class="valWarning"></span></td></tr>
+			<tr><td colspan="2"><input type="submit" value="Add Match" class="form-control" /></td></tr>
+		</table>
+		
+	</form>
+</div>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.0.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>

@@ -1,0 +1,17 @@
+﻿@model PlayerStatsVM
+<tr class="stats">
+	<td colspan="7">
+		<table class="stats">
+			@foreach (var item in Model.recentMatches)
+	{
+			<tr>
+				<td>@item.DatePlayed.ToString("yyyy-MM-dd"):</td>
+				<td> <span class="@((@item.SetsOne > @item.SetsTwo)?"win":"lose")">@item.PlayerOne</span></td>
+				<td>-</td>
+				<td><span class="@((@item.SetsOne < @item.SetsTwo)?"win":"lose")">@item.PlayerTwo</span> </td>
+				<td><strong>@item.SetsOne - @item.SetsTwo </strong></td>
+			</tr>
+	}
+		</table>
+	</td>
+</tr>

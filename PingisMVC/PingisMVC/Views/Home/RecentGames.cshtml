@@ -1,0 +1,35 @@
+﻿@model AllMatchesVM
+
+<h3 class="pageHeader">Spelade Matcher</h3><br />
+<table class="Matches">
+	@*<tr>
+		<th>Player Name</th>
+		<th>Set</th>
+		<th> - </th>
+		<th>Set</th>
+		<th>Player Name</th>
+		<th>Game played</th>
+	</tr>*@
+	@*@foreach (var item in Model.recentMatches)
+	{
+		<tr>
+			<td>@item.DatePlayed.ToString("yyyy-MM-dd"):</td>
+			<td> <span class="@((@item.SetsOne > @item.SetsTwo)?"win":"lose")">@item.PlayerOne</span></td>
+			<td>-</td>
+			<td><span class="@((@item.SetsOne < @item.SetsTwo)?"win":"lose")">@item.PlayerTwo</span> </td>
+			<td><strong>@item.SetsOne - @item.SetsTwo </strong></td>
+		</tr>
+	}*@
+
+	@foreach (var item in Model.recentMatches)
+		{
+			<tr>
+				<td><span style="@((@item.SetsOne > @item.SetsTwo)?"font-weight: bold":"")">@item.PlayerOne</span></td>
+				<td>@item.SetsOne</td>
+				<td> - </td>
+				<td>@item.SetsTwo</td>
+				<td><span style="@((@item.SetsOne < @item.SetsTwo)?"font-weight: bold":"lose")">@item.PlayerTwo</span></td>
+				<td>@item.DatePlayed.ToString("yyyy-MM-dd")</td>
+			</tr>
+		}
+</table>

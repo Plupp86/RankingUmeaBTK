@@ -1,0 +1,19 @@
+﻿@model AllMatchesVM
+
+<h3 class="pageHeader">Recent Games as Admin</h3><br />
+<table class="Matches">
+
+
+	@foreach (var item in Model.recentMatches)
+		{
+			<tr>
+				<td><span style="@((@item.SetsOne > @item.SetsTwo)?"font-weight: bold":"")">@item.PlayerOne</span></td>
+				<td>@item.SetsOne</td>
+				<td> - </td>
+				<td>@item.SetsTwo</td>
+				<td><span style="@((@item.SetsOne < @item.SetsTwo)?"font-weight: bold":"lose")">@item.PlayerTwo</span></td>
+				<td>@item.DatePlayed.ToString("yyyy-MM-dd")</td>
+				<td><a asp-controller="Admin" asp-action="RemoveMatch" asp-route-id="@item.MatchID">X</a></td>
+			</tr>
+		}
+</table>

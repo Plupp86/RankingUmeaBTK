@@ -1,0 +1,27 @@
+﻿@model LeagueTableVM
+
+
+<h3 class="pageHeader">Umeå BTKs interna ranking</h3><br />
+<table class="leaguetable">
+	<tr>
+	<th class="playerName">Player</th>
+	<th>Matches Played</th>
+	<th>Matches Won</th>
+	<th class="extra">Matches Lost</th>
+	<th class="extra">Sets Won</th>
+	<th class="extra">Sets Lost</th>
+	<th>Rating</th></tr>
+	@foreach (var item in Model.Players)
+	{
+		<tr onclick="toggleStats(@item.Id)" style="cursor:default">
+			<td class="playerName">@item.Name</td>
+			<td>@item.MatchesPlayed</td>
+			<td>@item.MatchesWon</td>
+			<td class="extra">@item.MatchesLost</td>
+			<td class="extra">@item.SetsWon</td>
+			<td class="extra">@item.SetsLost</td>
+			<td>@item.Elo</td>
+		</tr>
+		<tbody id="@("tb"+item.Id)" style="display:none"></tbody>
+	}
+</table>

@@ -1,0 +1,100 @@
+﻿@media only screen and (min-width: 10px) {
+	.collapse {
+		display: block;
+	}
+
+	.navbar-header {
+		float: left;
+	}
+
+	.navbar-toggle {
+		display: none;
+	}
+
+	.navbar-nav.navbar-left {
+		float: left;
+		margin: 0;
+	}
+
+	.navbar-nav.navbar-right {
+		float: right;
+		margin: 0;
+	}
+
+	.navbar-nav > li {
+		float: left;
+	}
+
+		.navbar-nav > li > a {
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+}
+
+@media only screen and (max-width: 510px) {
+	/*.collapse {
+		display: none;
+	}
+
+	.navbar-header {
+		display: block;
+	}*/
+
+	.mainPage {
+		width: 95%;
+		height: 100%;
+		margin: 5px auto;
+		padding-top: 20px;
+		background-color: white;
+		box-shadow: 0px 0px 10px white;
+	}
+
+	div.cont {
+		padding-top: 5px;
+	}
+
+	a, a:hover {
+		color: black;
+		font-size:12px;
+		
+	}
+
+	.mainPage {
+		padding-top: 5px;
+	}
+
+	.navbar-nav > li > a {
+		line-height: 15px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		padding-left: 5px;
+		padding-right: 5px;
+		text-align: center;
+		
+	}
+
+	.navbar-nav > li {
+		line-height: 15px;
+	}
+
+	.container-fluid {
+		padding: 0px;
+	}
+
+	.menuLinks{
+		margin-left:10px;
+		margin-right:10px;
+	}
+
+	table.leaguetable {
+		font-size: 11px;
+	}
+
+	.repMatch {
+		margin: auto;
+	}
+	.pageHeader {
+		text-align:center;
+	}
+
+}
