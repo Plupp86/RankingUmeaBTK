@@ -4,6 +4,11 @@ $btkblue: #183378;
 $btkgray: #292929;
 
 
+body, html {
+	height: 99%;
+	margin:0px;
+}
+
 body {
 	background-color: $btkgray;
 	color: black;
@@ -20,7 +25,7 @@ body {
 
 .right {
 	display:block;
-	float: right;
+	float: right;1
 	margin-right: 15px;
 }
 

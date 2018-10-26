@@ -14,56 +14,44 @@ namespace UmeaBTKRanking.Controllers
 {
     public class HomeController : Controller
     {
-		private readonly Repository rep;
+		public RepositoryHandler repHandler;
 
-		public HomeController(Repository rep)
+		public HomeController(RepositoryHandler repHandler)
 		{
-			this.rep = rep;
+			this.repHandler = repHandler;
 		}
 
 
 		// GET: /<controller>/
 		public IActionResult Index()
         {
-            return View(rep.GetLeagueTable());
+			var model = repHandler.GetLeagueTable();
+            return View("Index",model);
         }
 
 		public IActionResult RecentGames()
 		{
-			if (User.Identity.Name == "Admin")
+			if (repHandler.isAdmin())
 			{
+				//return View("Admin");
 				return RedirectToAction(nameof(AdminController.RecentGames), "Admin");
 			}
-			
-
-			return View(new AllMatchesVM()
+			else
 			{
-				recentMatches = rep.GetRecentMatches()
-			});
+				return View(repHandler.AllMatches());
+			}
 		}
 
 		public IActionResult PlayerStats(int id)
 		{
-			return PartialView("PlayStats", new PlayerStatsVM()
-			{
-				recentMatches = rep.GetMatchesById(id)
-			});
+			return PartialView("PlayStats", repHandler.PlayerStats(id));
+
 		}
 
 		[HttpGet]
 		public IActionResult AddPlayer()
 		{
-			var teams = rep.GetTeams();
-			var model = new AddPlayerVM
-			{
-				TeamDropList = new SelectListItem[teams.Length]
-			};
-
-			for (int i = 0; i < teams.Length; i++)
-			{
-				model.TeamDropList[i] = new SelectListItem { Value = teams[i].Id.ToString(), Text = teams[i].ClassName };
-			}
-			return View(model);
+			return View(repHandler.AddPlayerVM());
 		}
 
 		[HttpPost]
@@ -73,15 +61,18 @@ namespace UmeaBTKRanking.Controllers
 			{
 				return View(model);
 			}
-			model.TeamId = 3;
-			rep.AddPlayer(new Player(model.Name, model.TeamId));
-			return RedirectToAction(nameof(Index));
-		}
+			else
+			{
+				repHandler.AddPlayer(model);
+				return RedirectToAction(nameof(Index));
+			}
+	
+		}	
 
 		[HttpGet]
 		public IActionResult AddMatch()
 		{
-			return View(rep.PopulateLists());
+			return View(repHandler.PopulateLists());
 		}
 
 		[HttpPost]
@@ -99,19 +90,11 @@ namespace UmeaBTKRanking.Controllers
 
 			if (!ModelState.IsValid)
 			{
-				return View(rep.PopulateLists());
+				return View(repHandler.PopulateLists());
 			}
 
-			Match newMatch = new Match()
-			{
-				Player1Id = model.SelectedPlayer1Id,
-				Player2Id = model.SelectedPlayer2Id,
-				Player1Sets = model.SelectedPlayer1Sets,
-				Player2Sets = model.SelectedPlayer2Sets,
-				Date = DateTime.Now
-			};
-			
-			rep.AddMatch(newMatch);
+			repHandler.NewMatch(model);
+
 			return RedirectToAction(nameof(Index));
 		}
 	}

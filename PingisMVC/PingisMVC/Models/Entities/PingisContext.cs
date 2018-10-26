@@ -6,7 +6,11 @@ namespace UmeaBTKRanking.Models.Entities
 {
     public partial class PingisContext : DbContext
     {
-        public virtual DbSet<Match> Match { get; set; }
+		public PingisContext()
+		{
+		}
+
+		public virtual DbSet<Match> Match { get; set; }
         public virtual DbSet<Player> Player { get; set; }
         public virtual DbSet<Team> Team { get; set; }
 

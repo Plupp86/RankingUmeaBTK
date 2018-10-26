@@ -28,8 +28,8 @@ namespace UmeaBTKRanking
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var connString = conf.GetConnectionString("PingisDB");
-			//var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MiniProject_v3;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+			//var connString = conf.GetConnectionString("PingisDB");
+			var connString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MiniProject_v3;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
 			services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 				.AddCookie(o => o.LoginPath = "/Admin/Login");
@@ -40,7 +40,9 @@ namespace UmeaBTKRanking
 				o.UseSqlServer(connString));
 
 			services.AddTransient<Repository>();
+			services.AddTransient<RepositoryHandler>();
 			services.AddTransient<AccountRepository>();
+			services.AddTransient<RepositoryHandlerApi>();
 
 			services.AddIdentity<IdentityUser, IdentityRole>(o =>
 			{
@@ -61,15 +63,15 @@ namespace UmeaBTKRanking
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
+			//if (env.IsDevelopment())
+			//{
 				app.UseDeveloperExceptionPage();
-			}
-			else
-			{
-				app.UseExceptionHandler("/Error/ServerError");
-				app.UseStatusCodePagesWithRedirects("/Error/HttpError/{0}");
-			}
+			//}
+			//else
+			//{
+			//	app.UseExceptionHandler("/Error/ServerError");
+			//	app.UseStatusCodePagesWithRedirects("/Error/HttpError/{0}");
+			//}
 
 			app.UseAuthentication();
 			app.UseMvcWithDefaultRoute();

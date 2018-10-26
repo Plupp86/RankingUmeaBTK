@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static UmeaBTKRanking.Models.ViewModels.PlayedMatch;
+using Newtonsoft.Json;
 
 namespace UmeaBTKRanking.Models
 {
@@ -29,6 +30,55 @@ namespace UmeaBTKRanking.Models
 					.ToArray()
 			};
 		}
+
+		public string GetLeagueTableJson()
+		{
+			var players = context.Player
+					.OrderByDescending(p => p.Elo)
+					.ThenByDescending(p => p.MatchesWon)
+					.ToArray();
+
+			return JsonConvert.SerializeObject(players);
+		}
+
+		public string GetRecentMatchesJson()
+		{
+			var matches = context.Match
+				.OrderByDescending(m => m.Date)
+				.Select(m => new PlayedMatch
+				{
+					SetsOne = m.Player1Sets,
+					SetsTwo = m.Player2Sets,
+					DatePlayed = m.Date,
+					MatchID = m.Id
+				})
+				.Take(10)
+				.ToArray();
+			return JsonConvert.SerializeObject(matches);
+		}
+
+
+		public string GetMatchesByIdJson(int id)
+		{
+			var matches = context.Match
+			.Include(m => m.Player1)
+			.Include(m => m.Player2)
+			.OrderByDescending(m => m.Date)
+			.Where(m => m.Player1Id == id || m.Player2Id == id)
+			.Select(m => new PlayedMatch
+			{
+				PlayerOne = m.Player1.Name,
+				PlayerTwo = m.Player2.Name,
+				SetsOne = m.Player1Sets,
+				SetsTwo = m.Player2Sets,
+				DatePlayed = m.Date
+			})
+			.Take(5)
+			.ToArray();
+			return JsonConvert.SerializeObject(matches);
+		}
+
+
 
 		public Player GetPlayerById(int id)
 		{

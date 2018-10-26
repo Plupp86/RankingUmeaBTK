@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static UmeaBTKRanking.Models.ViewModels.PlayedMatch;
+using Newtonsoft.Json;
 
 namespace UmeaBTKRanking.Models
 {
 	public partial class Repository
 	{
+
 		public void AddPlayer(Player newPlayer)
 		{
 			context.Player
@@ -36,6 +38,15 @@ namespace UmeaBTKRanking.Models
 				.Remove(playerToRemove);
 			context.SaveChanges();
 		}
+
+		//internal void AddPlayerJson(Player player)
+		//{
+
+		//	context.Player
+		//		.Add(player);
+
+		//	context.SaveChanges();
+		//}
 
 		public void AddTeam(string TeamName)
 		{

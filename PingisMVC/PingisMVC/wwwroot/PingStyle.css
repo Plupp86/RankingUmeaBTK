@@ -1,4 +1,8 @@
-﻿body {
+﻿body, html {
+  height: 99%;
+  margin: 0px; }
+
+body {
   background-color: #292929;
   color: black; }
 
